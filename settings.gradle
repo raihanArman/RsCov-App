@@ -1,0 +1,6 @@
+rootProject.name = "RsCov"
+include ':app'
+include ':data'
+include ':features:home'
+include ':features:list_rs'
+include ':features:rs_detail'
