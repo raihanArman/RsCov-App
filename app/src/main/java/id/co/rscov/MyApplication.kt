@@ -3,6 +3,8 @@ package id.co.rscov
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import id.co.data.di.CoreModule.networkModule
+import id.co.data.di.CoreModule.repositoryModule
+import id.co.home.module.HomeModule.homeModule
 import id.co.rscov.di.AppModule.useCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -18,7 +20,8 @@ class MyApplication: Application() {
             androidContext(this@MyApplication)
             modules(listOf(
                 networkModule,
-                useCaseModule,
+                repositoryModule,
+                useCaseModule
             ))
         }
     }

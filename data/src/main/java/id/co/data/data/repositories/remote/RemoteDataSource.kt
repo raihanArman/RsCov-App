@@ -13,6 +13,7 @@ class RemoteDataSource (
 ){
     fun getHospital(): Flow<ResponseState<List<Hospital>>>{
         return flow {
+            emit(ResponseState.Loading())
             try{
                 val response = apiService.getHospital()
                 val data = response.data

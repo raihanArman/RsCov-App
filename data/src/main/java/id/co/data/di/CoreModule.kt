@@ -4,6 +4,7 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import id.co.data.data.network.ApiService
 import id.co.data.data.repositories.DataRepository
 import id.co.data.data.repositories.remote.RemoteDataSource
+import id.co.data.domain.repository.Repository
 import id.co.data.util.Constant.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,7 +38,7 @@ object CoreModule {
         single {
             RemoteDataSource(get())
         }
-        single {
+        single<Repository> {
             DataRepository(
                 get()
             )

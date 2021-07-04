@@ -2,4 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.co.rs_detail">
 
+    <application>
+        <activity android:name=".ui.DetailHospitalActivity"></activity>
+    </application>
+
 </manifest>

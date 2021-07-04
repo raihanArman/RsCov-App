@@ -15,4 +15,5 @@
         <activity android:name=".ui.HomeActivity"></activity>
     </application>
 
+
 </manifest>

@@ -31,6 +31,8 @@
 
                 <data android:scheme="rscov"/>
                 <data android:host="home"/>
+                <data android:host="list"/>
+                <data android:host="detail"/>
             </intent-filter>
         </activity>
     </application>
