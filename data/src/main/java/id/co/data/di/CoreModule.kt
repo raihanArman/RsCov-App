@@ -1,6 +1,7 @@
 package id.co.data.di
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import id.co.data.data.network.ApiMapsService
 import id.co.data.data.network.ApiService
 import id.co.data.data.repositories.DataRepository
 import id.co.data.data.repositories.remote.RemoteDataSource
@@ -12,6 +13,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 object CoreModule {
@@ -32,11 +34,20 @@ object CoreModule {
                 .build()
             retrofit.create(ApiService::class.java)
         }
+
+        single {
+            val retrofitMaps = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .client(get())
+                .build()
+            retrofitMaps.create(ApiMapsService::class.java)
+        }
     }
 
     val repositoryModule = module{
         single {
-            RemoteDataSource(get())
+            RemoteDataSource(get(), get())
         }
         single<Repository> {
             DataRepository(

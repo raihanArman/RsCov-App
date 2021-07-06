@@ -1,1 +1,6 @@
-<resources></resources>
+<resources>
+    <string name="title_activity_maps_hospital">Map</string>
+    <string name="title_activity_maps_amoas">Map</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_direction_key">AIzaSyBtnPVw4o2H1ZvDtRT8l8OTKCzS60eV0as</string>
+</resources>

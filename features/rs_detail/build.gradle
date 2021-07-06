@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+//apply plugin: 'com.google.gms.google-services'
+
 apply from: '../../shared_dependencies.gradle'
 android {
     compileSdkVersion 30
@@ -35,6 +37,7 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        viewBinding true
     }
 }
 

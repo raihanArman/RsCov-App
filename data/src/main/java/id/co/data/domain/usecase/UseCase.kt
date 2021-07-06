@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface UseCase {
     fun getHospital(): Flow<ResponseState<List<Hospital>>>
+    fun getHospitalById(idHospital: String): Flow<ResponseState<Hospital>>
+    fun getPathRouteMaps(url: String): Flow<ResponseState<String>>
 }

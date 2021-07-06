@@ -13,4 +13,12 @@ class DataRepository(
         return remote.getHospital()
     }
 
+    override fun getHospitalById(idHospital: String): Flow<ResponseState<Hospital>> {
+        return remote.getHospitalById(idHospital)
+    }
+
+    override fun getPathRouteMaps(url: String): Flow<ResponseState<String>> {
+        return remote.getRouteMaps(url)
+    }
+
 }
