@@ -64,4 +64,39 @@ class RemoteDataSource (
         }.flowOn(Dispatchers.IO)
     }
 
+    fun getAStarMetode(locationUser: String): Flow<ResponseState<List<Hospital>>>{
+        return flow {
+            emit(ResponseState.Loading())
+            try{
+                val response = apiService.getAStarMethod(locationUser)
+                val data = response.data
+                if(data.isNotEmpty()){
+                    emit(ResponseState.Success(data))
+                }else{
+                    emit(ResponseState.Empty)
+                }
+            }catch (e: Exception){
+                emit(ResponseState.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+
+    fun getBellmanMetode(locationUser: String): Flow<ResponseState<List<Hospital>>>{
+        return flow {
+            emit(ResponseState.Loading())
+            try{
+                val response = apiService.getBellmanMethod(locationUser)
+                val data = response.data
+                if(data.isNotEmpty()){
+                    emit(ResponseState.Success(data))
+                }else{
+                    emit(ResponseState.Empty)
+                }
+            }catch (e: Exception){
+                emit(ResponseState.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
 }

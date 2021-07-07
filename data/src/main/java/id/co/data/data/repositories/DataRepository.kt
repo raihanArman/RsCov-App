@@ -21,4 +21,12 @@ class DataRepository(
         return remote.getRouteMaps(url)
     }
 
+    override fun getAStarMethod(locationUser: String): Flow<ResponseState<List<Hospital>>> {
+        return remote.getAStarMetode(locationUser)
+    }
+
+    override fun getBellmanMethod(locationUser: String): Flow<ResponseState<List<Hospital>>> {
+        return remote.getBellmanMetode(locationUser)
+    }
+
 }

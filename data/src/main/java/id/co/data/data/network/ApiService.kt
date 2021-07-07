@@ -16,5 +16,14 @@ interface ApiService {
         @Query("id_rs") idHospital: String
     ): ResponseData<Hospital>
 
+    @GET("astar_metode.php")
+    suspend fun getAStarMethod(
+        @Query("location_user") locationUser: String
+    ): ResponseData<List<Hospital>>
+
+    @GET("bellman_metode.php")
+    suspend fun getBellmanMethod(
+        @Query("location_user") locationUser: String
+    ): ResponseData<List<Hospital>>
 
 }

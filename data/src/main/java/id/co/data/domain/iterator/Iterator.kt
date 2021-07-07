@@ -12,5 +12,6 @@ class Iterator (
     override fun getHospital(): Flow<ResponseState<List<Hospital>>> = repository.getHopital()
     override fun getHospitalById(idHospital: String): Flow<ResponseState<Hospital>> = repository.getHospitalById(idHospital)
     override fun getPathRouteMaps(url: String): Flow<ResponseState<String>> = repository.getPathRouteMaps(url)
-
+    override fun getAStarMethod(locationUser: String): Flow<ResponseState<List<Hospital>>> = repository.getAStarMethod(locationUser)
+    override fun getBellmanMethod(locationUser: String): Flow<ResponseState<List<Hospital>>> = repository.getBellmanMethod(locationUser)
 }

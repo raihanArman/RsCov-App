@@ -1,7 +1,8 @@
 package id.co.data.util
 
 object Constant {
-    const val BASE_URL = "http://192.168.43.22/api_rscov/"
+    const val BASE_URL = "http://192.168.43.22/api/"
+    const val BASE_URL_IMAGE = "http://192.168.43.22/images/"
 }
 
 object AppLink {

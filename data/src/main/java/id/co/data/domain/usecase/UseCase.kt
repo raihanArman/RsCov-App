@@ -8,4 +8,6 @@ interface UseCase {
     fun getHospital(): Flow<ResponseState<List<Hospital>>>
     fun getHospitalById(idHospital: String): Flow<ResponseState<Hospital>>
     fun getPathRouteMaps(url: String): Flow<ResponseState<String>>
+    fun getAStarMethod(locationUser: String): Flow<ResponseState<List<Hospital>>>
+    fun getBellmanMethod(locationUser: String): Flow<ResponseState<List<Hospital>>>
 }

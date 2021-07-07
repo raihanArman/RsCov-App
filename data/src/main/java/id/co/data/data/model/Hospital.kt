@@ -22,5 +22,10 @@ data class Hospital (
 
     @SerializedName("gambar")
     @Expose
-    val image: String
+    val image: String,
+
+
+    @SerializedName("jarak")
+    @Expose
+    val jarak: String?= "0",
 )
