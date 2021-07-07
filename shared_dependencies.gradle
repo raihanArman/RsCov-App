@@ -62,4 +62,7 @@ dependencies {
     //DeepLink
     implementation "com.airbnb:deeplinkdispatch:$deeplink"
     kapt "com.airbnb:deeplinkdispatch-processor:$deeplink"
+
+
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 }

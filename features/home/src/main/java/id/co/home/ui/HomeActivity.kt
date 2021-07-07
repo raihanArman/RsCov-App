@@ -34,8 +34,6 @@ class HomeActivity : AppCompatActivity() {
 
     private val viewModel: HomeViewModel by viewModel()
     private lateinit var dataBinding: ActivityHomeBinding
-    private var fusedLocationProviderClient: FusedLocationProviderClient? = null
-    private var currentLocation: Location? = null
 
     private val adapter: HospitalAdapter by lazy{
         HospitalAdapter(this) { item ->
@@ -48,61 +46,15 @@ class HomeActivity : AppCompatActivity() {
         loadKoinModules(homeModule)
 
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        supportActionBar!!.title = "Rumah Sakit Covid"
 
         setupAdapter()
         setupObserve()
-        setupPermission()
 
         dataBinding.fbSearch.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW,  Uri.parse("rscov://list")))
         }
 
-    }
-
-    private fun setupPermission() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION),
-                2121
-            )
-            return
-        }
-        fetchLocation()
-    }
-
-
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            2121 -> if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                fetchLocation()
-            }
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun fetchLocation() {
-        val task: Task<Location> = fusedLocationProviderClient?.lastLocation as Task<Location>
-        task.addOnSuccessListener {
-            if (it != null){
-                currentLocation = it
-
-            }
-        }
     }
 
     private fun setupObserve() {

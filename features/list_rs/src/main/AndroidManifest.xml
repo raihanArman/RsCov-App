@@ -3,7 +3,8 @@
     package="id.co.list_rs">
 
     <application>
-        <activity android:name=".ListHospitalActivity"></activity>
+        <activity android:name=".HasilMetodeActivity"></activity>
+        <activity android:name=".ListHospitalActivity" />
     </application>
 
 </manifest>

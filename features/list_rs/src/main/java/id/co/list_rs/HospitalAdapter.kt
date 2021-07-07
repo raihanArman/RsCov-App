@@ -1,16 +1,13 @@
-package id.co.home.ui
+package id.co.list_rs
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.co.data.data.model.Hospital
-import id.co.data.util.Constant
-import id.co.home.R
-import id.co.home.databinding.ItemHospitalBinding
+import id.co.list_rs.databinding.ItemHasilBinding
 
 class HospitalAdapter(val context: Context, val showDetail: (Hospital) -> Unit): RecyclerView.Adapter<HospitalAdapter.ViewHolder>(){
 
@@ -23,13 +20,17 @@ class HospitalAdapter(val context: Context, val showDetail: (Hospital) -> Unit):
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding: ItemHospitalBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: ItemHasilBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(hospital: Hospital){
             with(binding){
+                var jarak: String = if(hospital.jarak != ""){
+                    (hospital.jarak!!.toFloat()/1000).toString()
+                }else{
+                    "0"
+                }
                 tvHospital.text = hospital.name
-                Glide.with(context)
-                    .load("${Constant.BASE_URL_IMAGE+hospital.image}")
-                    .into(ivHospital)
+                tvLocation.text = hospital.location
+                tvJarak.text = "${jarak} Km"
             }
             itemView.setOnClickListener {
                 showDetail(hospital)
@@ -39,7 +40,7 @@ class HospitalAdapter(val context: Context, val showDetail: (Hospital) -> Unit):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding: ItemHospitalBinding = DataBindingUtil.inflate(inflater, R.layout.item_hospital, parent, false)
+        val binding: ItemHasilBinding = DataBindingUtil.inflate(inflater, R.layout.item_hasil, parent, false)
         return ViewHolder(binding)
     }
 

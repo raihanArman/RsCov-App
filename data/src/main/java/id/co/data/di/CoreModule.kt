@@ -21,9 +21,8 @@ object CoreModule {
         single {
             OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .addInterceptor(ChuckerInterceptor(androidContext()))
-                .connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
+                .connectTimeout(300, TimeUnit.SECONDS)
+                .readTimeout(300, TimeUnit.SECONDS)
                 .build()
         }
         single {

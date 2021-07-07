@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.airbnb.deeplinkdispatch.DeepLink
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import id.co.data.data.model.Hospital
 import id.co.data.data.network.ResponseState
 import id.co.data.util.AppLink
+import id.co.data.util.Constant
 import id.co.rs_detail.R
 import id.co.rs_detail.databinding.ActivityDetailHospitalBinding
 import id.co.rs_detail.module.DetailModule.detailModule
@@ -40,6 +42,7 @@ class DetailHospitalActivity : AppCompatActivity(), OnMapReadyCallback {
 
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Detail"
         
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail_hospital)
 
@@ -89,6 +92,10 @@ class DetailHospitalActivity : AppCompatActivity(), OnMapReadyCallback {
             nameHospital = data.name
             locationHospital = data.location
 
+
+            Glide.with(this@DetailHospitalActivity)
+                .load("${Constant.BASE_URL_IMAGE+data.image}")
+                .into(imageView)
         }
 
         setupMaps(data)

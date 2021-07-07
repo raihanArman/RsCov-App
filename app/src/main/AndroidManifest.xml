@@ -17,7 +17,8 @@
         android:name=".MyApplication"
         tools:replace="android:appComponentFactory"
         android:appComponentFactory="whateverString">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
