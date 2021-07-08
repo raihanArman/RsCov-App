@@ -77,6 +77,10 @@ class MapsHospitalActivity : AppCompatActivity(), OnMapReadyCallback {
         loadKoinModules(DetailModule.detailModule)
 
 
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = ""
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map_studio) as SupportMapFragment?
         mapFragment!!.getMapAsync(this)

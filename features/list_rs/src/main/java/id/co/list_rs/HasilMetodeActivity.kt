@@ -68,7 +68,7 @@ class HasilMetodeActivity : AppCompatActivity() {
         if(metode == METODE_ASTAR){
             dataBinding.tvTitle.text = "Hasil dari metode a star"
         }else{
-            dataBinding.tvTitle.text = "Hasil dari metode a bellman ford"
+            dataBinding.tvTitle.text = "Hasil dari metode bellman ford"
         }
     }
 
