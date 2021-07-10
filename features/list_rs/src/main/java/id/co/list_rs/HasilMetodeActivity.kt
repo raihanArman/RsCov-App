@@ -20,9 +20,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
 import id.co.data.data.model.Hospital
 import id.co.data.data.network.ResponseState
@@ -108,9 +105,9 @@ class HasilMetodeActivity : AppCompatActivity() {
                         Log.d("Lokasi User", "fetchLocation: ${locationUser.getAddressLine(0)}")
 
                         if(metode == METODE_ASTAR){
-                            getMethodAStar(locationUser.getAddressLine(0))
+                            getMethodAStar(locationUser.getAddressLine(0), it.latitude.toString(), it.longitude.toString())
                         }else{
-                            getMethodBellman(locationUser.getAddressLine(0))
+                            getMethodBellman(locationUser.getAddressLine(0), it.latitude.toString(), it.longitude.toString())
                         }
 
                     }
@@ -121,8 +118,8 @@ class HasilMetodeActivity : AppCompatActivity() {
         }
     }
 
-    private fun getMethodBellman(addressLine: String?) {
-        viewModel.getBellmanMethod(addressLine!!).observe(this, Observer {response ->
+    private fun getMethodBellman(addressLine: String?, latitude: String, longtitude: String) {
+        viewModel.getBellmanMethod(addressLine!!, latitude, longtitude).observe(this, Observer {response ->
             when(response){
                 is ResponseState.Success -> {
                     dataBinding.progressCircular.visibility = View.GONE
@@ -140,8 +137,8 @@ class HasilMetodeActivity : AppCompatActivity() {
         })
     }
 
-    private fun getMethodAStar(addressLine: String?) {
-        viewModel.getAStarMethod(addressLine!!).observe(this, Observer {response ->
+    private fun getMethodAStar(addressLine: String?, latitude: String, longtitude: String) {
+        viewModel.getAStarMethod(addressLine!!, latitude, longtitude).observe(this, Observer {response ->
             when(response){
                 is ResponseState.Success -> {
                     dataBinding.progressCircular.visibility = View.GONE

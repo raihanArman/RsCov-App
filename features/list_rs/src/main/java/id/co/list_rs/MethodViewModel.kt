@@ -8,12 +8,12 @@ import id.co.data.data.network.ResponseState
 import id.co.data.domain.usecase.UseCase
 
 class MethodViewModel(val usecase: UseCase): ViewModel() {
-    fun getAStarMethod(locationUser: String): LiveData<ResponseState<List<Hospital>>> {
-        return usecase.getAStarMethod(locationUser).asLiveData()
+    fun getAStarMethod(locationUser: String, latitude: String, longtitude: String): LiveData<ResponseState<List<Hospital>>> {
+        return usecase.getAStarMethod(locationUser, latitude, longtitude).asLiveData()
     }
 
-    fun getBellmanMethod(locationUser: String): LiveData<ResponseState<List<Hospital>>> {
-        return usecase.getBellmanMethod(locationUser).asLiveData()
+    fun getBellmanMethod(locationUser: String, latitude: String, longtitude: String): LiveData<ResponseState<List<Hospital>>> {
+        return usecase.getBellmanMethod(locationUser, latitude, longtitude).asLiveData()
     }
 
 }

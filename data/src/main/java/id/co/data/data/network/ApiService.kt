@@ -18,12 +18,16 @@ interface ApiService {
 
     @GET("astar_metode.php")
     suspend fun getAStarMethod(
-        @Query("location_user") locationUser: String
+        @Query("location_user") locationUser: String,
+        @Query("lat_user") latUser: String,
+        @Query("long_user") longUser: String
     ): ResponseData<List<Hospital>>
 
     @GET("bellman_metode.php")
     suspend fun getBellmanMethod(
-        @Query("location_user") locationUser: String
+        @Query("location_user") locationUser: String,
+        @Query("lat_user") latUser: String,
+        @Query("long_user") longUser: String
     ): ResponseData<List<Hospital>>
 
 }
