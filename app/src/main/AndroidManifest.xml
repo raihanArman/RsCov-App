@@ -16,6 +16,7 @@
         android:theme="@style/Theme.RsCov"
         android:name=".MyApplication"
         tools:replace="android:appComponentFactory"
+        android:usesCleartextTraffic="true"
         android:appComponentFactory="whateverString">
         <activity android:name=".MainActivity"
             android:theme="@style/NoActionBar">
